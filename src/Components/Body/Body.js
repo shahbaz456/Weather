@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Card, Button } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -11,13 +11,15 @@ export default function Body() {
 
   const zipcode = useSelector((state) => state.data.zipcode);
   const country = useSelector((state) => state.data.country);
+  const temperature = useSelector((state) => state.data.zipcode.main.temp);
+  const [temp, setTemp] = useState(temperature);
 
-  const kelvintofarhenheit = (f) => {
-    return ((f - 273.15) * 1.8 + 32).toFixed(2);
+  const kelvintofarhenheit = (temperature) => {
+    return setTemp((temperature - 273.15) * 1.8 + 32);
   };
 
-  const kelvintocelsius = (k) => {
-    return (k - 273.15).toFixed(2);
+  const kelvintocelsius = (temperature) => {
+    return setTemp(temperature - 273.15);
   };
 
   return (
@@ -28,24 +30,22 @@ export default function Body() {
             <div className="title">
               <div className="head">
                 <h1>
-                  {" "}
                   {zipcode.name}{" "}
-                  <sup onClick={kelvintofarhenheit}>
-                    {" "}
-                    {Object.keys(zipcode).length > 0 &&
-                      kelvintofarhenheit(zipcode?.main?.temp)}
+                  <sup
+                    className="kf"
+                    onClick={() => kelvintofarhenheit(temperature)}
+                  >
                     ℉
-                  </sup>{" "}
-                  <sup>℃</sup>
+                  </sup>
+                  |
+                  <sup
+                    className="kc"
+                    onClick={() => kelvintocelsius(temperature)}
+                  >
+                    ℃
+                  </sup>
                 </h1>
-                <p className="temp">
-                  {/* {Object.keys(zipcode).length > 0 &&
-                    kelvintofarhenheit(zipcode?.main?.temp)} */}
-
-                  {Object.keys(zipcode).length > 0 &&
-                    kelvintocelsius(zipcode?.main?.temp)}
-                  <sup>℃</sup>
-                </p>
+                <p className="temp">{temp}</p>
                 <p className="weath">
                   {Object.keys(zipcode).length > 0 && zipcode?.weather[0]?.main}
                   <br />
