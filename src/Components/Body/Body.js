@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React from "react";
 import { Card, Button } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -8,7 +8,7 @@ import Favourite from "../Favourites/Favourite";
 
 export default function Body() {
   const dispatch = useDispatch();
-  const [temp, setTemp] = useState();
+
   const zipcode = useSelector((state) => state.data.zipcode);
   const country = useSelector((state) => state.data.country);
 
@@ -29,7 +29,13 @@ export default function Body() {
               <div className="head">
                 <h1>
                   {" "}
-                  {zipcode.name} <sup onClick={kelvintofarhenheit}>℉</sup>{" "}
+                  {zipcode.name}{" "}
+                  <sup onClick={kelvintofarhenheit}>
+                    {" "}
+                    {Object.keys(zipcode).length > 0 &&
+                      kelvintofarhenheit(zipcode?.main?.temp)}
+                    ℉
+                  </sup>{" "}
                   <sup>℃</sup>
                 </h1>
                 <p className="temp">
