@@ -1,0 +1,19 @@
+.nav-bar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+.text {
+  color: white;
+}
+.search-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.ant-input-group-wrapper {
+  vertical-align: sub !important;
+}
+.img {
+  width: 75px;
+}

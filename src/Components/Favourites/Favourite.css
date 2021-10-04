@@ -1,0 +1,30 @@
+.card-bdy {
+  display: flex;
+  background-color: #efefef;
+}
+.fav-card {
+  background-color: #efefef;
+}
+.ant-card {
+  background-color: #efefef !important;
+}
+.fav-title {
+  display: flex;
+  font-size: 15px;
+}
+.fav-name {
+  display: flex;
+  justify-content: space-between;
+}
+.fav-btn {
+  background: none;
+  border: none;
+}
+.icon {
+  font-size: 20px;
+  cursor: pointer;
+}
+.country {
+  font-weight: 500;
+  cursor: pointer;
+}

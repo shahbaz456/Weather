@@ -1,0 +1,49 @@
+.carrd {
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.card-body {
+  /* border: 1px solid black !important; */
+  background-color: #efefef;
+  height: 100%;
+}
+.card-bdy {
+  background-color: #efefef;
+}
+/* .butn {
+  display: flex;
+  justify-content: end;
+} */
+.title {
+  display: flex;
+  justify-content: space-between;
+  /* flex-direction: column; */
+}
+.para {
+  /* display: flex; */
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+}
+.main-cs {
+  font-weight: 500;
+}
+
+.find-temp {
+  display: flex;
+  justify-content: flex-end;
+  gap: 40px;
+  margin-top: 20px;
+}
+.head {
+  display: flex;
+  flex-direction: column;
+}
+.temp {
+  font-size: 25px;
+  font-weight: 700;
+}
+.weath {
+  font-weight: 600;
+}
