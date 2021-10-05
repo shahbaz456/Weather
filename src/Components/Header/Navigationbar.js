@@ -86,7 +86,11 @@ export default function Navigationbar() {
           class="btn btn-primary"
           value={weather}
           type="primary"
-          onClick={weatherApi}
+          onClick={() => {
+            if (statecode.length > 2) {
+              weatherApi();
+            }
+          }}
         >
           Search
         </Button>
