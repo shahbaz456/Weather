@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Card, Button } from "antd";
 import { useSelector, useDispatch } from "react-redux";
 
@@ -11,16 +11,19 @@ export default function Body() {
 
   const zipcode = useSelector((state) => state.data.zipcode);
   const country = useSelector((state) => state.data.country);
-  const temperature = useSelector((state) => state.data.zipcode.main.temp);
+  const temperature = useSelector((state) => state.data?.zipcode?.main?.temp);
   const [temp, setTemp] = useState(temperature);
 
   const kelvintofarhenheit = (temperature) => {
-    return setTemp((temperature - 273.15) * 1.8 + 32);
+    return setTemp((temperature - 273.15) * 1.8 + 32).toFixed(2);
   };
 
   const kelvintocelsius = (temperature) => {
-    return setTemp(temperature - 273.15);
+    return setTemp(temperature - 273.15).toFixed(2);
   };
+  useEffect(() => {
+    setTemp(temperature);
+  }, [temperature]);
 
   return (
     <div className="carrd">
@@ -59,17 +62,10 @@ export default function Body() {
                     <Button
                       type="primary"
                       onClick={() => {
-                        if (country.includes(zipcode.name)) {
-                          dispatch({
-                            type: "REMOVE_FAVOURITE",
-                            payload: zipcode.name,
-                          });
-                        } else {
-                          dispatch({
-                            type: "ADD_FAVROUITE",
-                            payload: zipcode.name,
-                          });
-                        }
+                        dispatch({
+                          type: "ADD_FAVROUITE",
+                          payload: zipcode.name,
+                        });
                       }}
                     >
                       Add to favourite

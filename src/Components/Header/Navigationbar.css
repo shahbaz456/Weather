@@ -8,6 +8,7 @@
 }
 .search-bar {
   display: flex;
+  position: relative;
   justify-content: center;
   align-items: center;
 }
@@ -16,4 +17,25 @@
 }
 .img {
   width: 75px;
+}
+
+.drop-div {
+  position: absolute;
+  width: 200px;
+  height: 200px;
+  top: 30px;
+  left: 0px;
+  z-index: 1;
+  background-color: white;
+}
+.list {
+  margin: 0px;
+  padding: 0px;
+  list-style: none;
+}
+.list div {
+  height: 30px;
+}
+.list div:hover {
+  background-color: yellowgreen;
 }
