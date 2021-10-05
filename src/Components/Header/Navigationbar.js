@@ -32,8 +32,8 @@ export default function Navigationbar() {
 
   const dispatch = useDispatch();
 
-  const [weather, setWeather] = useState();
-  const [statecode, setStatecode] = useState();
+  // const [weather, setWeather] = useState();
+  const [statecode, setStatecode] = useState("");
 
   const weatherApi = () => {
     fetch(
@@ -44,12 +44,12 @@ export default function Navigationbar() {
     )
       .then((response) => response.json())
       .then((data) => {
-        setWeather(data);
+        // setWeather(data);
         dispatch({ type: "ZIP_CODE", payload: data });
       });
   };
 
-  console.log(weather);
+  // console.log(weather);
 
   return (
     <div className="nav-bar">
@@ -84,10 +84,10 @@ export default function Navigationbar() {
         /> */}
         <Button
           class="btn btn-primary"
-          value={weather}
+          // value={weather}
           type="primary"
           onClick={() => {
-            if (statecode.length > 2) {
+            if (statecode.length > 0) {
               weatherApi();
             }
           }}
